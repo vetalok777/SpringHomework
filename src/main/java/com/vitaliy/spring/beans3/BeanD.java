@@ -1,9 +1,7 @@
-package com.vitaliy.spring.beans1;
+package com.vitaliy.spring.beans3;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanC {
-
-
+public class BeanD {
 }
