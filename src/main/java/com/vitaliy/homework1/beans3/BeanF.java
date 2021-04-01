@@ -1,7 +1,8 @@
-package com.vitaliy.spring.beans2;
+package com.vitaliy.homework1.beans3;
+
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoseFlower {
+public class BeanF {
 }

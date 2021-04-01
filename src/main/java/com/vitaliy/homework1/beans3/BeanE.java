@@ -1,4 +1,4 @@
-package com.vitaliy.spring.beans3;
+package com.vitaliy.homework1.beans3;
 
 
 import org.springframework.stereotype.Component;

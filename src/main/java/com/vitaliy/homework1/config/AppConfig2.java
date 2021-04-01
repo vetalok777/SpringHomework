@@ -1,12 +1,12 @@
-package com.vitaliy.spring.config;
+package com.vitaliy.homework1.config;
 
-import com.vitaliy.spring.beans3.BeanD;
-import com.vitaliy.spring.beans3.BeanF;
+import com.vitaliy.homework1.beans3.BeanD;
+import com.vitaliy.homework1.beans3.BeanF;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@ComponentScan(basePackages = {"com.vitaliy.spring.beans2"})
+@ComponentScan(basePackages = {"com.vitaliy.homework1.beans2"})
 @Configuration
 public class AppConfig2 {
 

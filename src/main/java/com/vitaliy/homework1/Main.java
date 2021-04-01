@@ -1,12 +1,12 @@
-package com.vitaliy.spring;
+package com.vitaliy.homework1;
 
 
-import com.vitaliy.spring.config.AppConfig1;
+import com.vitaliy.homework1.config.AppConfig1;
 
-import com.vitaliy.spring.config.AppConfig2;
-import com.vitaliy.spring.config.OtherBeansConfig;
-import com.vitaliy.spring.config.SmartphonesConfig;
-import com.vitaliy.spring.smartphoneBeans.GeneralBean;
+import com.vitaliy.homework1.config.AppConfig2;
+import com.vitaliy.homework1.config.OtherBeansConfig;
+import com.vitaliy.homework1.config.SmartphonesConfig;
+import com.vitaliy.homework1.smartphoneBeans.GeneralBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

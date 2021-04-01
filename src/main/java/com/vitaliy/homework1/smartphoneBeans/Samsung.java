@@ -1,4 +1,4 @@
-package com.vitaliy.spring.smartphoneBeans;
+package com.vitaliy.homework1.smartphoneBeans;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.annotation.Order;

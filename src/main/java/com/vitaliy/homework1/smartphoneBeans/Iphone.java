@@ -1,4 +1,4 @@
-package com.vitaliy.spring.smartphoneBeans;
+package com.vitaliy.homework1.smartphoneBeans;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;

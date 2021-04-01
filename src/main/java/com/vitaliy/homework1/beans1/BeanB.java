@@ -1,7 +1,9 @@
-package com.vitaliy.spring.beans3;
+package com.vitaliy.homework1.beans1;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanD {
+public class BeanB {
+
+
 }

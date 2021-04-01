@@ -1,4 +1,4 @@
-package com.vitaliy.spring.otherBeans;
+package com.vitaliy.homework1.otherBeans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
