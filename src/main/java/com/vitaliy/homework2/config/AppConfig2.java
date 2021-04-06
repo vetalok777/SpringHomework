@@ -34,7 +34,7 @@ public class AppConfig2 {
     }
 
     @Bean
-    public MyBeanPostProcessor getBeanPostProcessor() {
+    public static MyBeanPostProcessor getBeanPostProcessor() {
         return new MyBeanPostProcessor();
     }
 
