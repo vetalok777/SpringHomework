@@ -14,7 +14,7 @@ public class Main {
             System.out.println(bean);
         }
 
-        //Getting bean with lazy annotation
+        //Getting bean with lazy annotation/
         ctx.getBean("getBeanF");
         ctx.close();
     }
