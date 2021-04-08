@@ -35,7 +35,7 @@ public class Main {
         System.out.println("--------Scanning smartphonesBeans package--------");
 
         //Beans that realized interface
-        for (String beanDefinitionName : context3.getBeanDefinitionNames()) {
+        for (String beanDefinitionName : context4.getBeanDefinitionNames()) {
             System.out.println(beanDefinitionName);
         }
         //Using collections of created beans and printing them
