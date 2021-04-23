@@ -1,5 +1,6 @@
 package com.vitaliy.paymentapp.repository.impl;
 
+import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
 import com.vitaliy.paymentapp.model.Admin;
 import com.vitaliy.paymentapp.model.User;
 import com.vitaliy.paymentapp.repository.AdminRepository;
@@ -17,9 +18,15 @@ public class AdminRepositoryImpl implements AdminRepository {
         return admins.stream()
                 .filter(admin -> admin.getLogin().equals(login))
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get admin"));
+
     }
 
+    @Override
+    public Admin createAdmin(Admin admin) {
+        admins.add(admin);
+        return admin;
+    }
 
 
 }

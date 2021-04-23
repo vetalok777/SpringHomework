@@ -1,5 +1,6 @@
 package com.vitaliy.paymentapp.repository.impl;
 
+import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
 import com.vitaliy.paymentapp.model.User;
 import com.vitaliy.paymentapp.repository.UserRepository;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class UserRepositoryImpl implements UserRepository {
         return users.stream()
                 .filter(user -> user.getLogin().equals(login))
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get user"));
     }
 
     @Override
@@ -25,7 +26,7 @@ public class UserRepositoryImpl implements UserRepository {
         return users.stream()
                 .filter(user -> user.getId().equals(id))
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get user"));
     }
 
     @Override

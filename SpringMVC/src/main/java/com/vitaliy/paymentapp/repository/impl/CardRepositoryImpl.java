@@ -1,5 +1,6 @@
 package com.vitaliy.paymentapp.repository.impl;
 
+import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
 import com.vitaliy.paymentapp.model.Card;
 import com.vitaliy.paymentapp.repository.CardRepository;
 import org.springframework.stereotype.Component;
@@ -26,7 +27,7 @@ public class CardRepositoryImpl implements CardRepository {
         return cards.stream()
                 .filter(card -> card.getNumber().equals(number))
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get card"));
     }
 
     @Override
@@ -34,7 +35,7 @@ public class CardRepositoryImpl implements CardRepository {
         return cards.stream()
                 .filter(card -> card.getName().equals(name))
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get card"));
     }
 
     @Override
@@ -42,7 +43,7 @@ public class CardRepositoryImpl implements CardRepository {
         return cards.stream()
                 .filter(card -> card.getNumber().equals(number))
                 .findFirst()
-                .orElseThrow(RuntimeException::new)
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get card id"))
                 .getId();
     }
 
@@ -51,7 +52,7 @@ public class CardRepositoryImpl implements CardRepository {
         return cards.stream()
                 .filter(card -> card.getNumber().equals(number))
                 .findFirst()
-                .orElseThrow(RuntimeException::new)
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get card status"))
                 .getStatus();
     }
 
@@ -64,7 +65,7 @@ public class CardRepositoryImpl implements CardRepository {
     public BigDecimal getCardBalance(String number) {
         return cards.stream()
                 .filter(card -> card.getNumber().equals(number))
-                .findFirst().orElseThrow(RuntimeException::new)
+                .findFirst().orElseThrow(() -> new ResourceNotFoundException("Cant get card balance"))
                 .getBalance();
     }
 
@@ -76,12 +77,12 @@ public class CardRepositoryImpl implements CardRepository {
     }
 
     @Override
-    public Integer updateCardStatus(Integer cardId, Integer status) {
+    public Card updateCardStatus(Integer cardId, Integer status) {
         Card card = cards.stream()
                 .filter(card1 -> card1.getId().equals(cardId))
-                .findFirst().orElseThrow(RuntimeException::new);
+                .findFirst().orElseThrow(() -> new ResourceNotFoundException("Cant update card status"));
         card.setStatus(status);
-        return card.getStatus();
+        return card;
     }
 
 }

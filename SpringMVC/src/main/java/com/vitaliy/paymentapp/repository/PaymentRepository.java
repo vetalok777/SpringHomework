@@ -11,5 +11,5 @@ public interface PaymentRepository {
 
     Payment getPayment(Integer id);
 
-    String updatePaymentStatus(String status, Integer id);
+    Payment updatePaymentStatus(String status, Integer id);
 }

@@ -1,10 +1,12 @@
 package com.vitaliy.paymentapp.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 public class UnblockRequest {
 
     private Integer id;

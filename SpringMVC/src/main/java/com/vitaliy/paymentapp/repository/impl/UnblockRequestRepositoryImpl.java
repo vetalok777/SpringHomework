@@ -1,5 +1,6 @@
 package com.vitaliy.paymentapp.repository.impl;
 
+import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
 import com.vitaliy.paymentapp.model.Payment;
 import com.vitaliy.paymentapp.model.UnblockRequest;
 import com.vitaliy.paymentapp.repository.UnblockRequestRepository;
@@ -24,7 +25,7 @@ public class UnblockRequestRepositoryImpl implements UnblockRequestRepository {
         return requests.stream()
                 .filter(request -> request.getId().equals(id))
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get unblock request"));
     }
 
     @Override
@@ -33,9 +34,9 @@ public class UnblockRequestRepositoryImpl implements UnblockRequestRepository {
     }
 
     @Override
-    public String updatePaymentStatus(String status, Integer id) {
+    public UnblockRequest changeUnblockRequestStatus(String status, Integer id) {
         UnblockRequest request = getUnblockRequest(id);
         request.setStatus(status);
-        return request.getStatus();
+        return request;
     }
 }

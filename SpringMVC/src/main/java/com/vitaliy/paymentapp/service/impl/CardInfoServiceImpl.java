@@ -1,8 +1,9 @@
-package com.vitaliy.paymentapp.service;
+package com.vitaliy.paymentapp.service.impl;
 
 import com.vitaliy.paymentapp.dto.CardInfoDto;
 import com.vitaliy.paymentapp.model.Card;
 import com.vitaliy.paymentapp.repository.CardRepository;
+import com.vitaliy.paymentapp.service.CardInfoService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

@@ -11,5 +11,5 @@ public interface UnblockRequestRepository {
 
     List<UnblockRequest> getAllUnblockRequests();
 
-    String updatePaymentStatus(String status, Integer id);
+    UnblockRequest changeUnblockRequestStatus(String status, Integer id);
 }

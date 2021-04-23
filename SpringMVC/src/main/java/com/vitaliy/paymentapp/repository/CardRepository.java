@@ -22,5 +22,5 @@ public interface CardRepository {
 
     Card updateBalance(String number, BigDecimal value);
 
-    Integer updateCardStatus(Integer cardId, Integer status);
+    Card updateCardStatus(Integer cardId, Integer status);
 }

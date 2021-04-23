@@ -1,5 +1,6 @@
 package com.vitaliy.paymentapp.repository.impl;
 
+import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
 import com.vitaliy.paymentapp.model.Payment;
 import com.vitaliy.paymentapp.model.User;
 import com.vitaliy.paymentapp.repository.PaymentRepository;
@@ -29,13 +30,13 @@ public class PaymentRepositoryImpl implements PaymentRepository {
         return payments.stream()
                 .filter(payment -> payment.getId().equals(id))
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new ResourceNotFoundException("Cant get payment"));
     }
 
     @Override
-    public String updatePaymentStatus(String status, Integer id) {
+    public Payment updatePaymentStatus(String status, Integer id) {
         Payment payment = getPayment(id);
         payment.setStatus(status);
-        return payment.getStatus();
+        return payment;
     }
 }
