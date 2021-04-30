@@ -4,7 +4,6 @@ import com.vitaliy.paymentapp.controller.assembler.UserAssembler;
 import com.vitaliy.paymentapp.controller.model.UserModel;
 import com.vitaliy.paymentapp.dto.UserDto;
 import com.vitaliy.paymentapp.dto.UserRegistrationDto;
-import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
 import com.vitaliy.paymentapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -66,11 +65,9 @@ public class UserController {
         return userAssembler.toModel(user);
     }
 
-    @PutMapping("/changeStatus/{status}{login}")
+    @PutMapping("/changeStatus/{login}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto changeStatus(@PathVariable @Valid
-                                @Pattern(regexp = "[0-1]", message = "Should be digit 0 or 1")
-                                        Integer status,
+    public UserDto changeStatus(@RequestParam boolean status,
                                 @Valid @PathVariable @NotNull(message = "Field must be not null") @Email
                                         (message = "Should be valid email") String login) {
         log.info("Change user status: " + status + ", " + login);

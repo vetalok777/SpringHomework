@@ -2,7 +2,6 @@ package com.vitaliy.paymentapp.controller;
 
 import com.vitaliy.paymentapp.controller.assembler.CardAssembler;
 import com.vitaliy.paymentapp.controller.model.CardModel;
-import com.vitaliy.paymentapp.controller.model.UserModel;
 import com.vitaliy.paymentapp.dto.CardDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

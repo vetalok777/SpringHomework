@@ -3,6 +3,7 @@ package com.vitaliy.paymentapp.mapper;
 import com.vitaliy.paymentapp.dto.CardDto;
 import com.vitaliy.paymentapp.dto.CardInfoDto;
 import com.vitaliy.paymentapp.dto.UserDto;
+import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
 import com.vitaliy.paymentapp.model.Card;
 import com.vitaliy.paymentapp.model.User;
 import com.vitaliy.paymentapp.repository.UserRepository;
@@ -18,7 +19,8 @@ public class CardInfoDtoMapper extends AbstractConverter<Card, CardInfoDto> {
 
     @Override
     protected CardInfoDto convert(final Card card) {
-        User user = userRepository.getUserById(card.getUserId());
+        User user = userRepository.findById(card.getUserId())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
 
         return CardInfoDto.builder()

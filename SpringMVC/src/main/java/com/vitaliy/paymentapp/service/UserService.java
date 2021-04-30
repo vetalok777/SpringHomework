@@ -12,7 +12,7 @@ public interface UserService {
 
     UserDto createUser(UserRegistrationDto userRegistrationDTO);
 
-    UserDto changeUserStatus(Integer status, String login);
+    UserDto changeUserStatus(boolean status, String login);
 
     List<UserDto> getAllUsers();
 }
