@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Data
@@ -28,4 +29,6 @@ public class User {
     private String firstName;
     @Column(name = "status", nullable = false, columnDefinition = "boolean default true")
     private boolean status;
+    @OneToMany(mappedBy = "user")
+    private Set<Card> cards;
 }

@@ -11,5 +11,5 @@ public class CardDto {
     private String name;
     private String number;
     private BigDecimal balance;
-    private Integer status;
+    private Boolean status;
 }

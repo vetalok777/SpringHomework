@@ -3,12 +3,14 @@ package com.vitaliy.paymentapp.controller;
 import com.vitaliy.paymentapp.controller.assembler.CardAssembler;
 import com.vitaliy.paymentapp.controller.model.CardModel;
 import com.vitaliy.paymentapp.dto.CardDto;
+import com.vitaliy.paymentapp.exception.ResourceNotFoundException;
+import com.vitaliy.paymentapp.repository.UserRepository;
+import com.vitaliy.paymentapp.service.CardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import com.vitaliy.paymentapp.service.CardService;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,6 +26,7 @@ public class CardController {
 
     private final CardService cardService;
     private final CardAssembler cardAssembler;
+    private final UserRepository userRepository;
 
     @GetMapping("/number/{number}")
     @ResponseStatus(HttpStatus.OK)
@@ -52,25 +55,28 @@ public class CardController {
         return CollectionModel.of(list);
     }
 
-    @PutMapping("/updateBalance/{number}{value}")
+    @PutMapping("/updateBalance/{number}")
     @ResponseStatus(HttpStatus.OK)
-    public CardDto updateCardBalance(@PathVariable String number, @PathVariable BigDecimal value) {
-        log.info("Update card balance: " + number + ", " + value);
-        return cardService.updateCardBalance(number, value);
+    public CardDto updateCardBalance(@PathVariable String number, @RequestParam BigDecimal value,
+                                     @RequestParam String action) throws Exception {
+        log.info("Update card balance to  " + action + ": " + number + ", " + value);
+        return cardService.updateCardBalance(number, value, action);
     }
 
-    @PutMapping("/updateStatus/{cardId}{status}")
+    @PutMapping("/updateStatus/{cardId}")
     @ResponseStatus(HttpStatus.OK)
-    public CardDto changeCardStatus(@PathVariable Integer cardId, @PathVariable Integer status) {
+    public CardDto changeCardStatus(@PathVariable Integer cardId, @RequestParam boolean status) {
         log.info("Update card status: " + cardId + ", " + status);
         return cardService.updateCardStatus(cardId, status);
     }
 
-    @PostMapping()
+    @PostMapping("/createCard/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public CardModel createCard(@RequestBody CardDto cardDto) {
+    public CardModel createCard(@RequestBody CardDto cardDto,
+                                @PathVariable(value = "userId") Integer userId) {
         log.info("Create card: " + cardDto);
-        CardDto card = cardService.createCard(cardDto);
+        CardDto card = cardService.createCard(cardDto, userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found")));
         return cardAssembler.toModel(card);
     }
 }

@@ -26,7 +26,8 @@ public class Card {
     @Column(name = "card_balance", nullable = false, columnDefinition = "Decimal default 0.0")
     private BigDecimal balance;
     @Column(name = "card_status", nullable = false, columnDefinition = "boolean default true")
-    private boolean status;
-    
-    private Integer userId;
+    private Boolean status;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

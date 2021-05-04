@@ -1,26 +1,13 @@
 package com.vitaliy.paymentapp.repository;
 
 import com.vitaliy.paymentapp.model.Card;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
-import java.util.List;
+import java.util.Optional;
 
-public interface CardRepository {
-    Card createCard(Card card);
-
-    Card getCard(String number);
-
-    Card getCardByName(String name);
-
-    Integer getCardId(String number);
-
-    Integer getCardStatus(String number);
-
-    List<Card> getAllCards();
-
-    BigDecimal getCardBalance(String number);
-
-    Card updateBalance(String number, BigDecimal value);
-
-    Card updateCardStatus(Integer cardId, Integer status);
+@Repository
+public interface CardRepository extends JpaRepository<Card, Integer> {
+    Optional<Card> getCardByNumber(String number);
+    Optional<Card> getCardByName(String name);
 }

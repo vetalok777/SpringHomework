@@ -19,7 +19,7 @@ public class CardInfoDtoMapper extends AbstractConverter<Card, CardInfoDto> {
 
     @Override
     protected CardInfoDto convert(final Card card) {
-        User user = userRepository.findById(card.getUserId())
+        User user = userRepository.findById(card.getUser().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
 
